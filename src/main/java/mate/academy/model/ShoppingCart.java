@@ -2,8 +2,6 @@ package mate.academy.model;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToMany;
@@ -16,12 +14,10 @@ import java.util.List;
 public class ShoppingCart {
     @MapsId
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     private User user;
-    @OneToMany(cascade = CascadeType.ALL,
-               orphanRemoval = true)
+    @OneToMany(orphanRemoval = true)
     private List<Ticket> tickets;
 
     public ShoppingCart() {
